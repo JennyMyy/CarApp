@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function EditCar(props){
 
+    // tallennetaan editoitavan auton tiedot
     const [car, setCar] = React.useState({
         brand: '',
         model: '',
@@ -20,6 +21,7 @@ export default function EditCar(props){
     // open on false, kun ikkuna on kiinni
     const [open, setOpen] = React.useState(false);
 
+    // asettaa uudet parametrit
     const handleClickOpen = () => {
         setOpen(true);
         setCar({
@@ -32,12 +34,14 @@ export default function EditCar(props){
         });
     }
 
+    // tallentaa päivitetyt tiedot
     const handleSave = () => {
         console.log("EditCar: update car information");
         props.updateCar(props.params.data._links.car.href, car);
         setOpen(false);
     }
 
+    // sulkee ikkunan
     const handleCancel = () => setOpen(false);
 
     return (

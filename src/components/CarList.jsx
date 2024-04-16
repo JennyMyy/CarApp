@@ -13,6 +13,7 @@ export default function CarList() {
 
     //states
     const [cars, setCars] = useState([{ brand: '', model: '', fuel: '', color: '', modelYear: '', price: ''}]);
+    // viestiä päivityksen onnistumisesta, tallennuksesta ja poistosta
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [msgSnackbar, setMsgSnackbar] = useState();
 
@@ -76,6 +77,7 @@ export default function CarList() {
         }
     }
 
+    // huom POST
     const addCar = (car) => {
         console.log("carlist: addCar");
         fetch("https://carrestservice-carshop.rahtiapp.fi/cars", {
@@ -95,11 +97,13 @@ export default function CarList() {
         })
         .then(data => {
             console.log("parsed JSON = " + data);
+            // kutsuu uudelleen autot
             getCars();
         })
         .catch(err => console.error(err))
     }
 
+    // Huom, PUT päivitettäessä, URL tulee suoraan restistä, missä on indeksi urlissa.
     const updateCar = (URL, updatedCar) => {
         console.log("carlist: addCar");
         fetch(URL, {
@@ -124,9 +128,10 @@ export default function CarList() {
         })
     }
 
-    // return
+    // return + props addCar
     return (
         <>
+            
             <AddCar addCar={addCar}/>
             <div className="ag-theme-material" style={{ width: 700, height: 500, margin: 'auto' }}>
                 <AgGridReact

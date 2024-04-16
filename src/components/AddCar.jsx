@@ -20,19 +20,22 @@ export default function AddCar(props) {
     // open on false, kun ikkuna on kiinni
     const [open, setOpen] = React.useState(false);
 
+    // kun klikataa, aukeaa syöttöikkuna
     const handleClickOpen = () => {
         setOpen(true);
     }
 
+    // save car
     const handleSave = () => {
         console.log("Addcar: save a new car");
         props.addCar(car);
         setOpen(false);
     }
 
+    // sulkee ikkunan
     const handleCancel = () => setOpen(false);
 
-
+    // return ja dialogilla syötät tiedot
     return (
         <div>
             <Button 
